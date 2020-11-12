@@ -42,4 +42,4 @@ production:
     - '5.63.154.173'
   DATABASES:
     default:
-      ENGINE: 'django.db.backends.postgresql'
+      ENGINE: django.db.backends.postgresql
