@@ -1,4 +1,6 @@
 default:
+  STATIC_ROOT: .
+  STATIC_URL: /static/
   SECRET_KEY: ''
   DEBUG: True
   LANGUAGE_CODE: 'en-us'
@@ -26,14 +28,6 @@ default:
     - django.middleware.clickjacking.XFrameOptionsMiddleware
     - corsheaders.middleware.CorsMiddleware
     - django.middleware.common.CommonMiddleware
-  DATABASES:
-    default:
-      ENGINE: ''
-      NAME: ''
-      USER: ''
-      PASSWORD: ''
-      HOST: ''
-      PORT: ''
 
 development:
   DEBUG: True
@@ -42,7 +36,7 @@ development:
   DATABASES:
     default:
       ENGINE: django.db.backends.sqlite3
-      NAME: db.sqlite3
+      NAME: /Users/sart/Develop/parts/src/db.sqlite3
 
 production:
   DEBUG: False
