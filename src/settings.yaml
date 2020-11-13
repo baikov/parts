@@ -48,4 +48,4 @@ production:
   DEBUG: False
   ALLOWED_HOSTS:
     - '5.63.154.173'
-  STATIC_ROOT: os.path.join(BASE_DIR, 'static/')
+  STATIC_ROOT: static/
