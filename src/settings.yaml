@@ -42,4 +42,5 @@ production:
   DEBUG: False
   ALLOWED_HOSTS:
     - '5.63.154.173'
+    - 'redapi.site'
   STATIC_ROOT: static/
