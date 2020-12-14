@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block seo_title %}CSV upload{% endblock seo_title %}
+{% block content %}
+    
+    <div class="card mb-3">
+        <form method="post" action="{% url 'csv_import' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+    {% if saved_file %}
+        <p>Загруженный файл {{uploaded_file}} сохранен под именем {{saved_file}}</p>
+    {% endif %}
+    {{message}}
+    <div class="card mt-3">
+    <form method="GET" action="{% url 'csv_import' %}">
+        <ul>
+            {% for name in files_name %}
+                <li>
+                {{name}} <a href="{% url 'csv_import' %}.?fff={{name}}" name="file_name">Show</a>
+                <a href="{% url 'csv_import' %}.?fff={{name}}&import=yes" name="file_name">Import</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </form>
+    </div>
+
+    <div class="card mt-3">
+        <table>
+            {% for row in data %}
+            <tr>
+                {% for field in row %}
+                <td>
+                    {{field}}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
