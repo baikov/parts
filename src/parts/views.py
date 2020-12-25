@@ -27,7 +27,7 @@ class PartViewset(generics.ListAPIView):
                 return parts
             else:
                 raise NotFound()
-        # return parts
+        return parts
 
 @permission_required('admin.can_add_log_entry')
 def upload_csv_from_form(request):
