@@ -1,9 +1,11 @@
 from re import template
 from django.shortcuts import render, redirect
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 from django.contrib import messages
 from rest_framework.exceptions import NotFound
 from django.contrib.auth.decorators import permission_required
+from rest_framework.decorators import permission_classes
 from rest_framework.pagination import PageNumberPagination
 
 from .models import Part
@@ -15,6 +17,7 @@ class SmallPagesPagination(PageNumberPagination):
     page_size = 40
 
 class PartViewset(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = PartSerializer
     pagination_class = SmallPagesPagination
 
@@ -29,6 +32,7 @@ class PartViewset(generics.ListAPIView):
                 raise NotFound()
         return parts
 
+@permission_classes([IsAuthenticated])
 @permission_required('admin.can_add_log_entry')
 def upload_csv_from_form(request):
     template = 'parts/upload_csv.html'
