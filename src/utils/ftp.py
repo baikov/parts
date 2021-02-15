@@ -98,10 +98,11 @@ def import_parts(filename):
     '''
     data = get_data_from_csv(filename)
     for row in data:
-        _, created = Part.objects.get_or_create(
-            vin = row[0],
-            code = row[1],
-            name = row[2],
-            unit = row[3],
-            count = row[4],
-            )
+        if row[0] and row[1] and row[2]:
+            _, created = Part.objects.get_or_create(
+                vin = row[0],
+                code = row[1],
+                name = row[2],
+                #unit = row[3],
+                #count = row[4],
+                )
